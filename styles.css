@@ -9,3 +9,34 @@ body {
 }
 
 /* solution styles */
+.toggle .switch {
+  position: relative;
+  left: 50%;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  padding: 5px;
+  background: var(--off);
+  border-radius: 100vw;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+
+.toggle .switch::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: var(--toggle-height);
+  aspect-ratio: 1;
+  background: white;
+  border-radius: 100%;
+  transition: all ease 0.3s;
+}
+
+.toggle input:checked + .switch {
+  background: var(--on);
+}
+
+.toggle input:checked + .switch::before {
+  transform: translateX(calc(var(--toggle-width) - var(--toggle-height)));
+}
