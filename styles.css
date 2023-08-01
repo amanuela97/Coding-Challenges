@@ -1,6 +1,6 @@
 :root {
-  --on: #6948ed;
-  --off: #555;
+  --on: linear-gradient(to right, hsl(211, 100%, 50%), hsl(179, 100%, 30%));
+  --off: linear-gradient(to top, hsl(344, 100%, 50%), hsl(31, 100%, 40%));
   --toggle-width: 80px;
   --toggle-height: 30px;
 }
@@ -18,7 +18,18 @@ body {
   background: var(--off);
   border-radius: 100vw;
   cursor: pointer;
-  transition: all ease 0.3s;
+  z-index: 1;
+}
+
+.toggle .switch::after {
+  position: absolute;
+  content: '';
+  inset: 0;
+  background: var(--on);
+  border-radius: 100vw;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s linear;
 }
 
 .toggle .switch::before {
@@ -33,8 +44,8 @@ body {
   transition: all ease 0.3s;
 }
 
-.toggle input:checked + .switch {
-  background: var(--on);
+.toggle input:checked + .switch::after {
+  opacity: 1;
 }
 
 .toggle input:checked + .switch::before {
